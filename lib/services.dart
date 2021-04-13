@@ -19,6 +19,8 @@ class Services {
       if (user == null)
         isLoggedIn = false;
       else {
+        String docId = user.email.replaceAll("@", "").replaceAll(".", "");
+        Data.userDocId = docId;
         isLoggedIn = true;
       }
     });

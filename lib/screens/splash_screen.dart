@@ -6,8 +6,9 @@ import 'login.dart';
 import 'home.dart';
 
 class SplashScreen extends StatelessWidget {
-  Future<Widget> checkIfLoggedIn() async {
-    if (await Services.checkIfLoggedIn()) {
+  Future<Widget> checkIfLoggedIn(BuildContext context) async {
+    bool isLoggedIn = await Services.checkIfLoggedIn();
+    if (isLoggedIn) {
       await Services.fetchUser();
       return Home();
     } else
@@ -19,7 +20,7 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Splash.SplashScreen(
         navigateAfterSeconds: 20,
-        navigateAfterFuture: checkIfLoggedIn(),
+        navigateAfterFuture: checkIfLoggedIn(context),
         backgroundColor: Colors.white,
         photoSize: 200.0,
         loaderColor: Theme.of(context).primaryColor,
