@@ -1,10 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fooddo_delivery/classes/delivery_person.dart';
+
+class Data {
+  static DeliveryPerson loggedInDeliveryPerson;
+  static String userDocId;
+}
 
 class Services {
   static Future<bool> checkIfLoggedIn() async {
     bool isLoggedIn;
     await FirebaseAuth.instance.authStateChanges().listen((User user) {
+      String docId = user.email.replaceAll("@", "").replaceAll(".", "");
+      Data.userDocId = docId;
       if (user == null)
         isLoggedIn = false;
       else {
@@ -26,6 +34,7 @@ class Services {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     try {
       String docId = email.replaceAll("@", "").replaceAll(".", "");
+      Data.userDocId = docId;
       await firebaseFirestore.collection("deliverypersons").doc(docId).set({
         "city": city,
         "name": name,
@@ -54,6 +63,8 @@ class Services {
     FirebaseAuth auth = FirebaseAuth.instance;
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
+      String docId = email.replaceAll("@", "").replaceAll(".", "");
+      Data.userDocId = docId;
       return "login-success";
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -63,6 +74,22 @@ class Services {
       }
     } catch (e) {
       return e.code;
+    }
+  }
+
+  static fetchUser() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    DocumentSnapshot doc = await firebaseFirestore
+        .collection("deliverypersons")
+        .doc(Data.userDocId)
+        .get();
+    if (doc.exists) {
+      Data.loggedInDeliveryPerson = new DeliveryPerson(
+        doc["name"],
+        doc["city"],
+        doc["phone"],
+        doc["vehicleCapacity"],
+      );
     }
   }
 }

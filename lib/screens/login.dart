@@ -218,6 +218,7 @@ class _LoginState extends State<Login> {
                                 String result =
                                     await Services.signIn(_email, _password);
                                 if (result == "login-success") {
+                                  await Services.fetchUser();
                                   Navigator.pushReplacementNamed(
                                     context,
                                     Home.pageRoute,

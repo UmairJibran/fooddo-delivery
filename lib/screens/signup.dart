@@ -419,7 +419,7 @@ class _SignUpState extends State<SignUp> {
                                   _vehicleCapacity,
                                 );
                                 if (result == "user-created") {
-                                  // await Services.fetchUser();
+                                  await Services.fetchUser();
                                   Navigator.of(context)
                                       .pushReplacementNamed(Home.pageRoute);
                                 } else {

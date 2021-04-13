@@ -8,7 +8,7 @@ import 'home.dart';
 class SplashScreen extends StatelessWidget {
   Future<Widget> checkIfLoggedIn() async {
     if (await Services.checkIfLoggedIn()) {
-      // await Services.fetchUser();
+      await Services.fetchUser();
       return Home();
     } else
       return Login();
