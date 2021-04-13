@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fooddo_delivery/screens/login.dart';
+import 'package:fooddo_delivery/screens/signup.dart';
+import 'package:fooddo_delivery/screens/splash_screen.dart';
 
 import 'screens/home.dart';
 
@@ -14,8 +17,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Color.fromRGBO(242, 166, 66, 1),
+        fontFamily: "Raleway",
+      ),
       routes: {
-        "/": (ctx) => Home(),
+        "/": (ctx) => SplashScreen(),
+        Home.pageRoute: (ctx) => Home(),
+        Login.pageRoute: (ctx) => Login(),
+        SignUp.pageRoute: (ctx) => SignUp(),
       },
     );
   }
