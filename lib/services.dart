@@ -14,8 +14,6 @@ class Services {
   static Future<bool> checkIfLoggedIn() async {
     bool isLoggedIn;
     await FirebaseAuth.instance.authStateChanges().listen((User user) {
-      String docId = user.email.replaceAll("@", "").replaceAll(".", "");
-      Data.userDocId = docId;
       if (user == null)
         isLoggedIn = false;
       else {
