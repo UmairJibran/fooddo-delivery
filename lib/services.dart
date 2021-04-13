@@ -2,9 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fooddo_delivery/classes/delivery_person.dart';
 
+import 'classes/assignment.dart';
+
 class Data {
   static DeliveryPerson loggedInDeliveryPerson;
   static String userDocId;
+  static List<Assignment> assignments = [];
 }
 
 class Services {
@@ -91,5 +94,29 @@ class Services {
         doc["vehicleCapacity"],
       );
     }
+    await Services.fetchAssignments();
+  }
+
+  static fetchAssignments() async {
+    Data.assignments.clear();
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    var assignments = await firebaseFirestore
+        .collection("deliverypersons")
+        .doc(Data.userDocId)
+        .collection("assignments")
+        .get();
+
+    if (assignments.docs.length == 0) return;
+    assignments.docs.forEach((assignment) {
+      print(assignment["donationId"]);
+      Data.assignments.add(new Assignment(
+        id: assignment.id,
+        donationId: assignment["donationId"],
+        donorContact: assignment["donorContact"],
+        pickUpAddress: assignment["pickUpAddress"],
+        servings: assignment["servings"],
+        date: assignment["date"],
+      ));
+    });
   }
 }
