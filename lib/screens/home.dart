@@ -3,6 +3,7 @@ import 'package:fooddo_delivery/classes/donation.dart';
 import 'package:fooddo_delivery/screens/donation_details.dart';
 
 import '../services.dart';
+import 'completed_assignments.dart';
 
 class Home extends StatefulWidget {
   static final pageRoute = "/home";
@@ -31,6 +32,21 @@ class _HomeState extends State<Home> {
             fontSize: 30,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.done_all_outlined),
+            onPressed: () async {
+              setState(() {
+                _loading = true;
+              });
+              await Services.fetchCompletedAssignments();
+              Navigator.of(context).pushNamed(CompletedAssignments.pageRoute);
+              setState(() {
+                _loading = false;
+              });
+            },
+          )
+        ],
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,

@@ -142,31 +142,37 @@ class _DonationDetailsState extends State<DonationDetails> {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FlatButton(
-                      onPressed: () async {
-                        setState(() {
-                          updating = true;
-                        });
-                        await Services.donationRecieved(
-                          donation.id,
-                          assignmentId,
-                        );
-                        await Services.fetchAssignments();
-                        setState(() {
-                          updating = false;
-                        });
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(
-                        "Confirm Recieved",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    )
-                  ],
-                ),
+                if (donation.status == "collecting")
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FlatButton(
+                        onPressed: () async {
+                          setState(() {
+                            updating = true;
+                          });
+                          await Services.donationRecieved(
+                            donation.id,
+                            assignmentId,
+                          );
+                          await Services.fetchAssignments();
+                          setState(() {
+                            updating = false;
+                          });
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(
+                          "Confirm Recieved",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      )
+                    ],
+                  ),
+                if (donation.status == "completed")
+                  Text(
+                    "Completed!",
+                    style: TextStyle(color: Colors.black),
+                  ),
               ],
             ),
           ),

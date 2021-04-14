@@ -4,6 +4,7 @@ import 'package:fooddo_delivery/screens/donation_details.dart';
 import 'package:fooddo_delivery/screens/login.dart';
 import 'package:fooddo_delivery/screens/signup.dart';
 import 'package:fooddo_delivery/screens/splash_screen.dart';
+import 'package:fooddo_delivery/screens/completed_assignments.dart';
 
 import 'screens/home.dart';
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         Login.pageRoute: (ctx) => Login(),
         SignUp.pageRoute: (ctx) => SignUp(),
         DonationDetails.pageRoute: (ctx) => DonationDetails(),
+        CompletedAssignments.pageRoute: (ctx) => CompletedAssignments(),
       },
     );
   }

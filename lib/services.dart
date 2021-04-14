@@ -10,6 +10,7 @@ class Data {
   static DeliveryPerson loggedInDeliveryPerson;
   static String userDocId;
   static List<Assignment> assignments = [];
+  static List<Assignment> completedAssignments = [];
 }
 
 class Services {
@@ -180,5 +181,27 @@ class Services {
           .doc(assignmentId)
           .delete();
     }
+  }
+
+  static fetchCompletedAssignments() async {
+    Data.completedAssignments.clear();
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    var completedAssignments = await firebaseFirestore
+        .collection("deliverypersons")
+        .doc(Data.userDocId)
+        .collection("completedassignments")
+        .get();
+
+    if (completedAssignments.docs.length == 0) return;
+    completedAssignments.docs.forEach((assignment) {
+      Data.completedAssignments.add(new Assignment(
+        id: assignment.id,
+        donationId: assignment["donationId"],
+        donorContact: assignment["donorContact"],
+        pickUpAddress: assignment["pickUpAddress"],
+        servings: assignment["servings"],
+        date: assignment["date"],
+      ));
+    });
   }
 }
