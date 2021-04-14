@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fooddo_delivery/classes/delivery_person.dart';
+import 'package:intl/intl.dart';
 
 import 'classes/assignment.dart';
+import 'classes/donation.dart';
 
 class Data {
   static DeliveryPerson loggedInDeliveryPerson;
@@ -118,5 +120,65 @@ class Services {
         date: assignment["date"],
       ));
     });
+  }
+
+  static fetchDonation(String donationId) async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    var doc =
+        await firebaseFirestore.collection("donations").doc(donationId).get();
+    var documentData = doc.data();
+    return new Donation(
+      id: doc.id,
+      city: documentData["city"],
+      date: documentData["date"],
+      donorId: documentData["donorId"],
+      imgUrl: documentData["imgUrl"],
+      pickupAddress: documentData["pickupAddress"],
+      serving: documentData["servings"],
+      status: documentData["status"],
+    );
+  }
+
+  static donationRecieved(String donationId, String assignmentId) async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    DocumentSnapshot doc =
+        await firebaseFirestore.collection("donations").doc(donationId).get();
+    if (doc.exists) {
+      var donationDocument = doc.data();
+      await firebaseFirestore
+          .collection("users")
+          .doc(donationDocument["donorId"])
+          .collection("notifications")
+          .add(
+        {
+          "donationId": doc.id,
+          "status": "completed",
+          "timeStamp": DateFormat.yMMMEd().format(DateTime.now()).toString(),
+        },
+      );
+      donationDocument["status"] = "completed";
+      firebaseFirestore
+          .collection("donations")
+          .doc(donationId)
+          .update(donationDocument);
+      var assignment = await firebaseFirestore
+          .collection("deliverypersons")
+          .doc(Data.userDocId)
+          .collection("assignments")
+          .doc(assignmentId)
+          .get();
+      var assignmentData = assignment.data();
+      await firebaseFirestore
+          .collection("deliverypersons")
+          .doc(Data.userDocId)
+          .collection("completedassignments")
+          .add(assignmentData);
+      await firebaseFirestore
+          .collection("deliverypersons")
+          .doc(Data.userDocId)
+          .collection("assignments")
+          .doc(assignmentId)
+          .delete();
+    }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fooddo_delivery/screens/donation_details.dart';
 import 'package:fooddo_delivery/screens/login.dart';
 import 'package:fooddo_delivery/screens/signup.dart';
 import 'package:fooddo_delivery/screens/splash_screen.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         Home.pageRoute: (ctx) => Home(),
         Login.pageRoute: (ctx) => Login(),
         SignUp.pageRoute: (ctx) => SignUp(),
+        DonationDetails.pageRoute: (ctx) => DonationDetails(),
       },
     );
   }
