@@ -5,6 +5,7 @@ class Assignment {
   final String pickUpAddress;
   final int servings;
   final String date;
+  final Map<String, dynamic> longlat;
 
   Assignment({
     this.id,
@@ -13,5 +14,6 @@ class Assignment {
     this.pickUpAddress,
     this.servings,
     this.date,
+    this.longlat,
   });
 }

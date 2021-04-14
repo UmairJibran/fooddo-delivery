@@ -32,6 +32,7 @@ dependencies:
   firebase_core:
   cloud_firestore:
   firebase_auth:
+  maps_launcher:
 
 dev_dependencies:
   flutter_test:

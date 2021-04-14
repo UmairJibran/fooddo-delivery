@@ -137,6 +137,7 @@ class Services {
       pickupAddress: documentData["pickupAddress"],
       serving: documentData["servings"],
       status: documentData["status"],
+      longlat: documentData["address"],
     );
   }
 
@@ -201,6 +202,7 @@ class Services {
         pickUpAddress: assignment["pickUpAddress"],
         servings: assignment["servings"],
         date: assignment["date"],
+        longlat: assignment["address"],
       ));
     });
   }

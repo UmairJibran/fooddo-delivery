@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fooddo_delivery/classes/donation.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
 import '../services.dart';
 
@@ -143,30 +144,44 @@ class _DonationDetailsState extends State<DonationDetails> {
                   ],
                 ),
                 if (donation.status == "collecting")
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FlatButton(
-                        onPressed: () async {
-                          setState(() {
-                            updating = true;
-                          });
-                          await Services.donationRecieved(
-                            donation.id,
-                            assignmentId,
-                          );
-                          await Services.fetchAssignments();
-                          setState(() {
-                            updating = false;
-                          });
-                          Navigator.of(context).pop();
-                        },
-                        child: Text(
-                          "Confirm Recieved",
+                  FlatButton(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.location_on_outlined),
+                        Text(
+                          "Get Directions",
                           style: TextStyle(color: Colors.black),
                         ),
-                      )
-                    ],
+                      ],
+                    ),
+                    onPressed: () {
+                      MapsLauncher.launchCoordinates(
+                        donation.longlat["latitude"],
+                        donation.longlat["longitude"],
+                      );
+                    },
+                  ),
+                if (donation.status == "collecting")
+                  FlatButton(
+                    onPressed: () async {
+                      setState(() {
+                        updating = true;
+                      });
+                      await Services.donationRecieved(
+                        donation.id,
+                        assignmentId,
+                      );
+                      await Services.fetchAssignments();
+                      setState(() {
+                        updating = false;
+                      });
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      "Confirm Recieved",
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 if (donation.status == "completed")
                   Text(

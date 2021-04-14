@@ -7,6 +7,7 @@ class Donation {
   final String pickupAddress;
   final String donorId;
   final String city;
+  final Map<String, dynamic> longlat;
 
   Donation({
     this.id,
@@ -17,5 +18,6 @@ class Donation {
     this.status,
     this.date,
     this.city,
+    this.longlat,
   });
 }
