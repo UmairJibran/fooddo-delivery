@@ -207,4 +207,14 @@ class Services {
       ));
     });
   }
+
+  static assignmentSeen(String assignmentId) async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    await firebaseFirestore
+        .collection("deliverypersons")
+        .doc(Data.userDocId)
+        .collection("assignments")
+        .doc(assignmentId)
+        .set({"seen": true});
+  }
 }

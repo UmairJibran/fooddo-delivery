@@ -133,6 +133,8 @@ class _HomeState extends State<Home> {
                           Donation donation = await Services.fetchDonation(
                             Data.assignments[index - 1].donationId,
                           );
+                          await Services.assignmentSeen(
+                              Data.assignments[index - 1].id);
                           setState(() {
                             _loading = false;
                           });
