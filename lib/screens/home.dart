@@ -109,6 +109,16 @@ class _HomeState extends State<Home> {
                       return ListTile(
                         leading: Text(index.toString()),
                         title: Text(Data.assignments[index - 1].donationId),
+                        trailing: Data.assignments[index - 1].seen
+                            ? null
+                            : Container(
+                                height: 10,
+                                width: 10,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                              ),
                         subtitle: Text(
                           Data.assignments[index - 1].pickUpAddress,
                           style: TextStyle(

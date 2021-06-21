@@ -6,6 +6,7 @@ class Assignment {
   final int servings;
   final String date;
   final Map<String, dynamic> longlat;
+  final bool seen;
 
   Assignment({
     this.id,
@@ -15,5 +16,6 @@ class Assignment {
     this.servings,
     this.date,
     this.longlat,
+    this.seen
   });
 }

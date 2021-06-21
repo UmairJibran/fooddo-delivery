@@ -119,6 +119,7 @@ class Services {
         pickUpAddress: assignment["pickUpAddress"],
         servings: assignment["servings"],
         date: assignment["date"],
+        seen: assignment["seen"],
       ));
     });
   }
