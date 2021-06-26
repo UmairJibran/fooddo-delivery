@@ -228,4 +228,12 @@ class Services {
         .doc(assignmentId)
         .update({"seen": true});
   }
+
+  static logout() async {
+    await FirebaseAuth.instance.signOut();
+    Data.loggedInDeliveryPerson = null;
+    Data.userDocId = null;
+    Data.assignments = [];
+    Data.completedAssignments = [];
+  }
 }

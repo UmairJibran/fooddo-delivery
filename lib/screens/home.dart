@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooddo_delivery/classes/donation.dart';
 import 'package:fooddo_delivery/screens/donation_details.dart';
+import 'package:fooddo_delivery/screens/login.dart';
 
 import '../services.dart';
 import 'completed_assignments.dart';
@@ -45,7 +46,13 @@ class _HomeState extends State<Home> {
                 _loading = false;
               });
             },
-          )
+          ),
+          IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () async {
+                await Services.logout();
+                Navigator.of(context).pushReplacementNamed(Login.pageRoute);
+              })
         ],
       ),
       body: Container(
