@@ -42,14 +42,39 @@ class _CompletedAssignmentsState extends State<CompletedAssignments> {
                       itemBuilder: (_, index) {
                         return ListTile(
                           leading: Text((index + 1).toString()),
-                          title:
-                              Text(Data.completedAssignments[index].donationId),
-                          subtitle: Text(
-                            Data.completedAssignments[index].pickUpAddress,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                            ),
+                          title: Text(
+                            "${Data.completedAssignments[index].name} => ${Data.completedAssignments[index].recipientCharity}",
+                          ),
+                          trailing: Data.completedAssignments[index].seen
+                              ? Container(
+                                  height: 10,
+                                  width: 10,
+                                )
+                              : Container(
+                                  height: 10,
+                                  width: 10,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                ),
+                          subtitle: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                Data.completedAssignments[index].pickUpAddress,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Text(
+                                DateTime.fromMicrosecondsSinceEpoch(
+                                  Data.completedAssignments[index].time
+                                      .microsecondsSinceEpoch,
+                                ).toString(),
+                              )
+                            ],
                           ),
                           onTap: () async {
                             setState(() {
