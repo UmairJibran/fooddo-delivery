@@ -4,6 +4,7 @@ import 'package:maps_launcher/maps_launcher.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 import '../services.dart';
+import 'home.dart';
 
 class DonationDetails extends StatefulWidget {
   static final pageRoute = "/donation-deatil";
@@ -229,19 +230,41 @@ class _DonationDetailsState extends State<DonationDetails> {
                   ),
                 if (donation.status == "collecting")
                   FlatButton(
-                    onPressed: () async {
-                      setState(() {
-                        updating = true;
-                      });
-                      await Services.donationRecieved(
-                        donation.id,
-                        assignmentId,
+                    onPressed: () {
+                      return showDialog(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          content: Text(
+                            "Make Sure you have recieved the donation",
+                          ),
+                          actions: [
+                            FlatButton(
+                              child: Text("Confirm"),
+                              onPressed: () async {
+                                setState(() {
+                                  updating = true;
+                                });
+                                await Services.donationRecieved(
+                                  donation.id,
+                                  assignmentId,
+                                );
+                                await Services.fetchAssignments();
+                                setState(() {
+                                  updating = false;
+                                });
+                                Navigator.pushReplacementNamed(
+                                  context,
+                                  Home.pageRoute,
+                                );
+                              },
+                            ),
+                            FlatButton(
+                              child: Text("Dismiss"),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                          ],
+                        ),
                       );
-                      await Services.fetchAssignments();
-                      setState(() {
-                        updating = false;
-                      });
-                      Navigator.of(context).pop();
                     },
                     child: Text(
                       "Confirm Recieved",
