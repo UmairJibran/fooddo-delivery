@@ -33,6 +33,7 @@ dependencies:
   cloud_firestore:
   firebase_auth:
   maps_launcher:
+  flutter_phone_direct_caller:
 
 dev_dependencies:
   flutter_test:

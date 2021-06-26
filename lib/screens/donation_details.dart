@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooddo_delivery/classes/donation.dart';
 import 'package:maps_launcher/maps_launcher.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 import '../services.dart';
 
@@ -190,6 +191,16 @@ class _DonationDetailsState extends State<DonationDetails> {
                   ),
               ],
             ),
+          ),
+          FlatButton(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [Text("Call Donor"), Icon(Icons.call)],
+            ),
+            onPressed: () async {
+              bool res = await FlutterPhoneDirectCaller.callNumber(
+                  "+${donation.donorId}");
+            },
           ),
         ],
       ),
