@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Donation {
   final String id;
   final String imgUrl;
@@ -8,6 +10,9 @@ class Donation {
   final String donorId;
   final String city;
   final Map<String, dynamic> longlat;
+  final String donorName;
+  final String recepient;
+  final Timestamp timeStamp;
 
   Donation({
     this.id,
@@ -19,5 +24,8 @@ class Donation {
     this.date,
     this.city,
     this.longlat,
+    this.donorName,
+    this.recepient,
+    this.timeStamp,
   });
 }

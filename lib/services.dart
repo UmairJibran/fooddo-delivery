@@ -143,6 +143,9 @@ class Services {
       serving: documentData["servings"],
       status: documentData["status"],
       longlat: documentData["address"],
+      timeStamp: documentData["timeStamp"],
+      donorName: documentData["name"],
+      recepient: documentData["recipient"],
     );
   }
 

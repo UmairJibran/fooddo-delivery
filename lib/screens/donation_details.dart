@@ -28,6 +28,8 @@ class _DonationDetailsState extends State<DonationDetails> {
     final Map args = ModalRoute.of(context).settings.arguments as Map;
     final Donation donation = args["donation"];
     final String assignmentId = args["assignmentId"];
+    final date = new DateTime.fromMicrosecondsSinceEpoch(
+        donation.timeStamp.microsecondsSinceEpoch);
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -112,7 +114,7 @@ class _DonationDetailsState extends State<DonationDetails> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Pick Up Address",
+                          "Details:",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
@@ -121,7 +123,25 @@ class _DonationDetailsState extends State<DonationDetails> {
                         if (donation.status == "completed")
                           Icon(
                             Icons.done_all_outlined,
-                            color: Theme.of(context).primaryColor,
+                            color: Colors.blue[700],
+                            size: 30,
+                          )
+                        else if (donation.status == "waiting")
+                          Icon(
+                            Icons.schedule_outlined,
+                            color: Colors.indigo,
+                            size: 30,
+                          )
+                        else if (donation.status == "accepted")
+                          Icon(
+                            Icons.check,
+                            color: Colors.green,
+                            size: 30,
+                          )
+                        else if (donation.status == "rejected")
+                          Icon(
+                            Icons.close,
+                            color: Colors.red,
                             size: 30,
                           )
                         else if (donation.status == "collecting")
@@ -134,7 +154,51 @@ class _DonationDetailsState extends State<DonationDetails> {
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: Text(
-                        donation.pickupAddress,
+                        "Donor: ${donation.donorName}",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Text(
+                        "Donor Contact: ${donation.donorId}",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Text(
+                        "Recepient Charity: ${donation.recepient}",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Text(
+                        "PickUp Location: ${donation.pickupAddress}",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Text(
+                        "Donation Time: $date",
                         style: TextStyle(
                           color: Colors.black54,
                           fontWeight: FontWeight.bold,
