@@ -119,6 +119,10 @@ class Services {
         pickUpAddress: assignment["pickUpAddress"],
         servings: assignment["servings"],
         date: assignment["date"],
+        longlat: assignment["address"],
+        name: assignment["donorName"],
+        recipientCharity: assignment["recipient"],
+        time: assignment["time"],
         seen: assignment["seen"],
       ));
     });
@@ -204,6 +208,10 @@ class Services {
         servings: assignment["servings"],
         date: assignment["date"],
         longlat: assignment["address"],
+        name: assignment["donorName"],
+        recipientCharity: assignment["recipient"],
+        time: assignment["time"],
+        seen: assignment["seen"],
       ));
     });
   }

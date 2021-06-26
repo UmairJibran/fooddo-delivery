@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Assignment {
   final String id;
   final String donationId;
@@ -6,6 +8,9 @@ class Assignment {
   final int servings;
   final String date;
   final Map<String, dynamic> longlat;
+  final Timestamp time;
+  final String name;
+  final String recipientCharity;
   final bool seen;
 
   Assignment({
@@ -16,6 +21,9 @@ class Assignment {
     this.servings,
     this.date,
     this.longlat,
-    this.seen
+    this.seen,
+    this.recipientCharity,
+    this.name,
+    this.time,
   });
 }

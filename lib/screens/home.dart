@@ -108,9 +108,13 @@ class _HomeState extends State<Home> {
                         );
                       return ListTile(
                         leading: Text(index.toString()),
-                        title: Text(Data.assignments[index - 1].donationId),
+                        title: Text(
+                            "${Data.assignments[index - 1].name} => ${Data.assignments[index - 1].recipientCharity}"),
                         trailing: Data.assignments[index - 1].seen
-                            ? null
+                            ? Container(
+                                height: 10,
+                                width: 10,
+                              )
                             : Container(
                                 height: 10,
                                 width: 10,
@@ -119,12 +123,24 @@ class _HomeState extends State<Home> {
                                   borderRadius: BorderRadius.circular(100),
                                 ),
                               ),
-                        subtitle: Text(
-                          Data.assignments[index - 1].pickUpAddress,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                          ),
+                        subtitle: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              Data.assignments[index - 1].pickUpAddress,
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              DateTime.fromMicrosecondsSinceEpoch(Data
+                                      .assignments[index - 1]
+                                      .time
+                                      .microsecondsSinceEpoch)
+                                  .toString(),
+                            )
+                          ],
                         ),
                         onTap: () async {
                           setState(() {
