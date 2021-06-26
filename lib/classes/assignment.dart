@@ -11,7 +11,7 @@ class Assignment {
   final Timestamp time;
   final String name;
   final String recipientCharity;
-  final bool seen;
+  bool seen;
 
   Assignment({
     this.id,

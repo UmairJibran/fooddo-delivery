@@ -152,6 +152,8 @@ class _HomeState extends State<Home> {
                           );
                           await Services.assignmentSeen(
                               Data.assignments[index - 1].id);
+                          Data.assignments[index - 1].seen = true;
+
                           setState(() {
                             _loading = false;
                           });
