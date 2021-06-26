@@ -215,6 +215,6 @@ class Services {
         .doc(Data.userDocId)
         .collection("assignments")
         .doc(assignmentId)
-        .set({"seen": true});
+        .update({"seen": true});
   }
 }
