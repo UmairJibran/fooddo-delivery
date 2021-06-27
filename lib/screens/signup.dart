@@ -221,7 +221,7 @@ class _SignUpState extends State<SignUp> {
                                 ),
                                 SizedBox(height: 10),
                                 Text(
-                                  "Vehicle Capacity",
+                                  "Vehicle Capacity(per meal)",
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Theme.of(context).primaryColor,
@@ -237,7 +237,7 @@ class _SignUpState extends State<SignUp> {
                                   },
                                   validator: (value) {
                                     if (value.isEmpty) {
-                                      return "Please Enter capacity of your vehicle";
+                                      return "Please Enter capacity(per meal) of your vehicle";
                                     }
                                     return null;
                                   },
@@ -245,7 +245,7 @@ class _SignUpState extends State<SignUp> {
                                   enableSuggestions: true,
                                   decoration: InputDecoration(
                                     hintText:
-                                        "Please Enter capacity of your vehicle",
+                                        "Please Enter capacity(per meal) of your vehicle",
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Theme.of(context).primaryColor,
