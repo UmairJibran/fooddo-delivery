@@ -108,106 +108,111 @@ class _DonationDetailsState extends State<DonationDetails> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Container(
+                  height: height * 0.17,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Details:",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Details:",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,
+                              ),
+                            ),
+                            if (donation.status == "completed")
+                              Icon(
+                                Icons.done_all_outlined,
+                                color: Colors.blue[700],
+                                size: 30,
+                              )
+                            else if (donation.status == "waiting")
+                              Icon(
+                                Icons.schedule_outlined,
+                                color: Colors.indigo,
+                                size: 30,
+                              )
+                            else if (donation.status == "accepted")
+                              Icon(
+                                Icons.check,
+                                color: Colors.green,
+                                size: 30,
+                              )
+                            else if (donation.status == "rejected")
+                              Icon(
+                                Icons.close,
+                                color: Colors.red,
+                                size: 30,
+                              )
+                            else if (donation.status == "collecting")
+                              Icon(
+                                Icons.local_shipping_outlined,
+                                color: Colors.cyan,
+                              )
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Text(
+                            "Donor: ${donation.donorName}",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                           ),
                         ),
-                        if (donation.status == "completed")
-                          Icon(
-                            Icons.done_all_outlined,
-                            color: Colors.blue[700],
-                            size: 30,
-                          )
-                        else if (donation.status == "waiting")
-                          Icon(
-                            Icons.schedule_outlined,
-                            color: Colors.indigo,
-                            size: 30,
-                          )
-                        else if (donation.status == "accepted")
-                          Icon(
-                            Icons.check,
-                            color: Colors.green,
-                            size: 30,
-                          )
-                        else if (donation.status == "rejected")
-                          Icon(
-                            Icons.close,
-                            color: Colors.red,
-                            size: 30,
-                          )
-                        else if (donation.status == "collecting")
-                          Icon(
-                            Icons.local_shipping_outlined,
-                            color: Colors.cyan,
-                          )
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Text(
+                            "Donor Contact: ${donation.donorId}",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Text(
+                            "Recepient Charity: ${donation.recepient}",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Text(
+                            "PickUp Location: ${donation.pickupAddress}",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Text(
+                            "Donation Time: $date",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Text(
-                        "Donor: ${donation.donorName}",
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Text(
-                        "Donor Contact: ${donation.donorId}",
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Text(
-                        "Recepient Charity: ${donation.recepient}",
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Text(
-                        "PickUp Location: ${donation.pickupAddress}",
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Text(
-                        "Donation Time: $date",
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 if (donation.status == "collecting")
                   FlatButton(
