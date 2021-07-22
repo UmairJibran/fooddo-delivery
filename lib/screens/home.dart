@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      FlatButton(
+                      ElevatedButton(
                         child: Text(
                           "Refresh!",
                           style: TextStyle(
@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
                     itemCount: Data.assignments.length + 1,
                     itemBuilder: (_, index) {
                       if (index == 0)
-                        return FlatButton(
+                        return ElevatedButton(
                           child: Text(
                             "Refresh!",
                             style: TextStyle(

@@ -184,11 +184,7 @@ class _LoginState extends State<Login> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          FlatButton(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 25,
-                            ),
+                          ElevatedButton(
                             onPressed: () {
                               Navigator.of(context)
                                   .pushReplacementNamed(SignUp.pageRoute);
@@ -202,12 +198,7 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                           ),
-                          FlatButton(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 25,
-                            ),
-                            color: Theme.of(context).primaryColor,
+                          ElevatedButton(
                             onPressed: () async {
                               if (_key.currentState.validate()) {
                                 setState(() {

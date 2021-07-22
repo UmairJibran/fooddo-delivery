@@ -215,14 +215,14 @@ class _DonationDetailsState extends State<DonationDetails> {
                   ),
                 ),
                 if (donation.status == "collecting")
-                  FlatButton(
+                  ElevatedButton(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.location_on_outlined),
                         Text(
                           "Get Directions",
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                         ),
                       ],
                     ),
@@ -234,7 +234,7 @@ class _DonationDetailsState extends State<DonationDetails> {
                     },
                   ),
                 if (donation.status == "collecting")
-                  FlatButton(
+                  ElevatedButton(
                     onPressed: () {
                       return showDialog(
                         context: context,
@@ -243,7 +243,7 @@ class _DonationDetailsState extends State<DonationDetails> {
                             "Make Sure you have recieved the donation",
                           ),
                           actions: [
-                            FlatButton(
+                            ElevatedButton(
                               child: Text("Confirm"),
                               onPressed: () async {
                                 setState(() {
@@ -263,7 +263,7 @@ class _DonationDetailsState extends State<DonationDetails> {
                                 );
                               },
                             ),
-                            FlatButton(
+                            ElevatedButton(
                               child: Text("Dismiss"),
                               onPressed: () => Navigator.pop(context),
                             ),
@@ -273,7 +273,7 @@ class _DonationDetailsState extends State<DonationDetails> {
                     },
                     child: Text(
                       "Confirm Recieved",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 if (donation.status == "completed")
@@ -284,7 +284,7 @@ class _DonationDetailsState extends State<DonationDetails> {
               ],
             ),
           ),
-          FlatButton(
+          ElevatedButton(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [Text("Call Donor"), Icon(Icons.call)],

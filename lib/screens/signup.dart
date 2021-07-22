@@ -380,11 +380,11 @@ class _SignUpState extends State<SignUp> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          FlatButton(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 25,
-                            ),
+                          ElevatedButton(
+                            // padding: EdgeInsets.symmetric(
+                            //   vertical: 10,
+                            //   horizontal: 25,
+                            // ),
                             onPressed: () {
                               Navigator.of(context)
                                   .pushReplacementNamed(Login.pageRoute);
@@ -398,12 +398,7 @@ class _SignUpState extends State<SignUp> {
                               ),
                             ),
                           ),
-                          FlatButton(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 25,
-                            ),
-                            color: Theme.of(context).primaryColor,
+                          ElevatedButton(
                             onPressed: () async {
                               if (_formKey.currentState.validate()) {
                                 setState(() {
