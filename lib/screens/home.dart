@@ -113,81 +113,87 @@ class _HomeState extends State<Home> {
                             });
                           },
                         );
-                      return ListTile(
-                        leading: Text(index.toString()),
-                        title: RichText(
-                          text: TextSpan(
-                            text: "${Data.assignments[index - 1].name}",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: " to ",
-                                style: TextStyle(fontWeight: FontWeight.normal),
-                              ),
-                              TextSpan(
-                                text:
-                                    "${Data.assignments[index - 1].recipientCharity}",
-                              ),
-                            ],
-                          ),
-                        ),
-                        trailing: Data.assignments[index - 1].seen
-                            ? Container(
-                                height: 10,
-                                width: 10,
-                              )
-                            : Container(
-                                height: 10,
-                                width: 10,
-                                decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-                              ),
-                        subtitle: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              Data.assignments[index - 1].pickUpAddress,
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 5),
+                        child: ListTile(
+                          tileColor:
+                              Theme.of(context).primaryColor.withOpacity(0.3),
+                          leading: Text(index.toString()),
+                          title: RichText(
+                            text: TextSpan(
+                              text: "${Data.assignments[index - 1].name}",
                               style: TextStyle(
-                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
+                              children: [
+                                TextSpan(
+                                  text: " to ",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.normal),
+                                ),
+                                TextSpan(
+                                  text:
+                                      "${Data.assignments[index - 1].recipientCharity}",
+                                ),
+                              ],
                             ),
-                            Text(
-                              DateTime.fromMicrosecondsSinceEpoch(Data
-                                      .assignments[index - 1]
-                                      .time
-                                      .microsecondsSinceEpoch)
-                                  .toString(),
-                            )
-                          ],
-                        ),
-                        onTap: () async {
-                          setState(() {
-                            _loading = true;
-                          });
-                          Donation donation = await Services.fetchDonation(
-                            Data.assignments[index - 1].donationId,
-                          );
-                          await Services.assignmentSeen(
-                              Data.assignments[index - 1].id);
-                          Data.assignments[index - 1].seen = true;
+                          ),
+                          trailing: Data.assignments[index - 1].seen
+                              ? Container(
+                                  height: 10,
+                                  width: 10,
+                                )
+                              : Container(
+                                  height: 10,
+                                  width: 10,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                ),
+                          subtitle: Row(
+                            children: [
+                              Text(
+                                Data.assignments[index - 1].pickUpAddress,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Spacer(),
+                              Text(
+                                DateTime.fromMicrosecondsSinceEpoch(Data
+                                        .assignments[index - 1]
+                                        .time
+                                        .microsecondsSinceEpoch)
+                                    .toString(),
+                              )
+                            ],
+                          ),
+                          onTap: () async {
+                            setState(() {
+                              _loading = true;
+                            });
+                            Donation donation = await Services.fetchDonation(
+                              Data.assignments[index - 1].donationId,
+                            );
+                            await Services.assignmentSeen(
+                                Data.assignments[index - 1].id);
+                            Data.assignments[index - 1].seen = true;
 
-                          setState(() {
-                            _loading = false;
-                          });
-                          Navigator.of(context).pushNamed(
-                            DonationDetails.pageRoute,
-                            arguments: {
-                              "donation": donation,
-                              "assignmentId": Data.assignments[index - 1].id,
-                            },
-                          );
-                        },
+                            setState(() {
+                              _loading = false;
+                            });
+                            Navigator.of(context).pushNamed(
+                              DonationDetails.pageRoute,
+                              arguments: {
+                                "donation": donation,
+                                "assignmentId": Data.assignments[index - 1].id,
+                              },
+                            );
+                          },
+                        ),
                       );
                     },
                   ),
