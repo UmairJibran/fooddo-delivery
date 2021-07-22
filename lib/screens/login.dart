@@ -82,14 +82,6 @@ class _LoginState extends State<Login> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(
-                              "Email",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
                             TextFormField(
                               initialValue: _email,
                               onChanged: (value) {
@@ -112,23 +104,30 @@ class _LoginState extends State<Login> {
                               keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
                                 hintText: "Enter your Email",
-                                enabledBorder: UnderlineInputBorder(
+                                enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Theme.of(context).primaryColor,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.red,
                                   ),
                                 ),
                               ),
                             ),
                             SizedBox(
                               height: 10,
-                            ),
-                            Text(
-                              "Password",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.bold,
-                              ),
                             ),
                             TextFormField(
                               onChanged: (value) {
@@ -149,9 +148,24 @@ class _LoginState extends State<Login> {
                               obscureText: true,
                               decoration: InputDecoration(
                                 hintText: "Enter your Password",
-                                enabledBorder: UnderlineInputBorder(
+                                enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Theme.of(context).primaryColor,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.red,
                                   ),
                                 ),
                               ),
@@ -193,7 +207,6 @@ class _LoginState extends State<Login> {
                               "Sign Up",
                               style: TextStyle(
                                 fontSize: 20,
-                                color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

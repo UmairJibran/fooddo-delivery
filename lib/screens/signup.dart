@@ -100,14 +100,6 @@ class _SignUpState extends State<SignUp> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
-                                  "Complete Name",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                                 TextFormField(
                                   initialValue: _completeName,
                                   onChanged: (value) {
@@ -140,22 +132,29 @@ class _SignUpState extends State<SignUp> {
                                   enableSuggestions: true,
                                   decoration: InputDecoration(
                                     hintText: "Enter your Name",
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ),
                                 ),
                                 SizedBox(height: 10),
-                                Text(
-                                  "Email",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                                 TextFormField(
                                   initialValue: _email,
                                   onChanged: (value) {
@@ -179,22 +178,29 @@ class _SignUpState extends State<SignUp> {
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
                                     hintText: "Enter your Email",
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ),
                                 ),
                                 SizedBox(height: 10),
-                                Text(
-                                  "Phone",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                                 TextFormField(
                                   initialValue: _phoneNumber,
                                   onChanged: (value) {
@@ -212,22 +218,29 @@ class _SignUpState extends State<SignUp> {
                                   enableSuggestions: true,
                                   decoration: InputDecoration(
                                     hintText: "Please Enter your phone Number",
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ),
                                 ),
                                 SizedBox(height: 10),
-                                Text(
-                                  "Vehicle Capacity(per meal)",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                                 TextFormField(
                                   initialValue: _vehicleCapacity.toString(),
                                   onChanged: (value) {
@@ -246,22 +259,29 @@ class _SignUpState extends State<SignUp> {
                                   decoration: InputDecoration(
                                     hintText:
                                         "Please Enter capacity(per meal) of your vehicle",
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ),
                                 ),
                                 SizedBox(height: 10),
-                                Text(
-                                  "City",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                                 DropdownButton<City>(
                                   hint: Text("Select a city"),
                                   value: _city,
@@ -282,14 +302,6 @@ class _SignUpState extends State<SignUp> {
                                   ).toList(),
                                 ),
                                 SizedBox(height: 10),
-                                Text(
-                                  "Password",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                                 TextFormField(
                                   onChanged: (value) {
                                     setState(() {
@@ -309,22 +321,29 @@ class _SignUpState extends State<SignUp> {
                                   obscureText: true,
                                   decoration: InputDecoration(
                                     hintText: "Enter your Password",
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ),
                                 ),
                                 SizedBox(height: 10),
-                                Text(
-                                  "Password",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                                 TextFormField(
                                   validator: (value) {
                                     if (value.isEmpty) {
@@ -341,9 +360,24 @@ class _SignUpState extends State<SignUp> {
                                   obscureText: true,
                                   decoration: InputDecoration(
                                     hintText: "Re-Enter your Password",
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Theme.of(context).primaryColor,
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ),
@@ -393,7 +427,6 @@ class _SignUpState extends State<SignUp> {
                               "Log In",
                               style: TextStyle(
                                 fontSize: 20,
-                                color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
