@@ -116,7 +116,7 @@ class _HomeState extends State<Home> {
                       return ListTile(
                         leading: Text(index.toString()),
                         title: Text(
-                          "${Data.assignments[index - 1].name} => ${Data.assignments[index - 1].recipientCharity}",
+                          "${Data.assignments[index - 1].name} to ${Data.assignments[index - 1].recipientCharity}",
                         ),
                         trailing: Data.assignments[index - 1].seen
                             ? Container(
